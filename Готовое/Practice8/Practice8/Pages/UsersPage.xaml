@@ -1,0 +1,42 @@
+﻿<Page x:Class="Practice8.Pages.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Пользователи"
+      Background="AntiqueWhite">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Список пользователей -->
+        <ListView x:Name="UsersListView" Grid.Row="1" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
+                        <GridViewColumnHeader Content="ID" Click="GridViewColumnHeader_Click"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding last_name}" Width="100">
+                        <GridViewColumnHeader Content="Фамилия" Click="GridViewColumnHeader_Click"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding first_name}" Width="100">
+                        <GridViewColumnHeader Content="Имя" Click="GridViewColumnHeader_Click"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding patronymic}" Width="100">
+                        <GridViewColumnHeader Content="Отчество" Click="GridViewColumnHeader_Click"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding login}" Width="100">
+                        <GridViewColumnHeader Content="Логин" Click="GridViewColumnHeader_Click"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки добавления/редактирования -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="Добавить" Width="100" Margin="5" Click="AddUser_Click"/>
+            <Button Content="Редактировать" Width="100" Margin="5" Click="EditUser_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,54 @@
+﻿<Page x:Class="Practice8.Pages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Платежи"
+      Background="AntiqueWhite">
+    <Page.Resources>
+        <!-- Стиль для сортируемых заголовков столбцов -->
+        <Style x:Key="SortableHeaderStyle" TargetType="GridViewColumnHeader">
+            <EventSetter Event="Click" Handler="GridViewColumnHeader_Click"/>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Список платежей -->
+        <ListView x:Name="OrdersListView" Grid.Row="1" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
+                        <GridViewColumnHeader Content="ID" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Products.name}" Width="150">
+                        <GridViewColumnHeader Content="Продукт" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Users.last_name}" Width="150">
+                        <GridViewColumnHeader Content="Пользователь" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding price}" Width="100">
+                        <GridViewColumnHeader Content="Цена" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding count}" Width="100">
+                        <GridViewColumnHeader Content="Количество" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding sum}" Width="100">
+                        <GridViewColumnHeader Content="Сумма" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding date}" Width="100">
+                        <GridViewColumnHeader Content="Дата" Style="{StaticResource SortableHeaderStyle}"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопки добавления/редактирования -->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="Добавить" Width="100" Margin="5" Click="AddOrder_Click"/>
+            <Button Content="Редактировать" Width="100" Margin="5" Click="EditOrder_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
