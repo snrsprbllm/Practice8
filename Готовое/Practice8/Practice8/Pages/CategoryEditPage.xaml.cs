@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -7,39 +8,51 @@ namespace Practice8.Pages
 {
     public partial class CategoryEditPage : Page
     {
-        private Practice8Entities _context;
-        private Сategories _category;
+        private readonly Сategories _category;
+        private readonly Action _onCategoryUpdated;
 
-        public CategoryEditPage(Сategories category = null)
+        public CategoryEditPage(Сategories category, Action onCategoryUpdated)
         {
             InitializeComponent();
-            _context = Practice8Entities.GetContext();
-            _category = category != null ? category : new Сategories();
+            _category = category;
+            _onCategoryUpdated = onCategoryUpdated;
 
-            if (category != null)
-            {
-                CategoryNameTextBox.Text = category.name;
-            }
+            // Привязка данных
+            CategoryNameTextBox.Text = _category.name;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(CategoryNameTextBox.Text))
             {
-                InfoTextBlock.Text = "Заполните название категории!";
+                MessageBox.Show("Название категории не может быть пустым.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            _category.name = CategoryNameTextBox.Text.Trim();
-
-            if (_category.id == 0)
+            try
             {
-                _context.Сategories.Add(_category);
-            }
+                // Обновляем категорию
+                _category.name = CategoryNameTextBox.Text;
 
-            _context.SaveChanges();
-            MessageBox.Show("Категория успешно сохранена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-            NavigationService.GoBack();
+                var context = Practice8Entities.GetContext();
+                if (!context.Сategories.Any(c => c.id == _category.id))
+                {
+                    context.Сategories.Add(_category); // Добавляем, если это новая категория
+                }
+
+                context.SaveChanges();
+
+                MessageBox.Show("Категория сохранена.", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Обновляем список категорий
+                _onCategoryUpdated?.Invoke();
+
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿<Page x:Class="Practice8.ProductEditPage"
+﻿<Page x:Class="Practice8.Pages.ProductEditPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Добавление/Редактирование продукции"

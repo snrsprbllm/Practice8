@@ -15,28 +15,29 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="ID" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding last_name}" Width="100">
-                        <GridViewColumnHeader Content="Фамилия" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Фамилия" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding first_name}" Width="100">
-                        <GridViewColumnHeader Content="Имя" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Имя" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding patronymic}" Width="100">
-                        <GridViewColumnHeader Content="Отчество" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Отчество" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding login}" Width="100">
-                        <GridViewColumnHeader Content="Логин" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Логин" Click="SortUsers"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <!-- Кнопки добавления/редактирования -->
+        <!-- Кнопки добавления/редактирования/удаления -->
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
             <Button Content="Добавить" Width="100" Margin="5" Click="AddUser_Click"/>
             <Button Content="Редактировать" Width="100" Margin="5" Click="EditUser_Click"/>
+            <Button Content="Удалить" Width="100" Margin="5" Click="DeleteUser_Click"/>
         </StackPanel>
     </Grid>
 </Page>

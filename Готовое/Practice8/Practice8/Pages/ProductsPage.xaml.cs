@@ -1,119 +1,88 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using System.Data.Entity;
-using System;
 
-namespace Practice8
+namespace Practice8.Pages
 {
     public partial class ProductsPage : Page
     {
-        private bool _isSortAscending = true;
-        private string _currentSortColumn = "id"; // Сортировка по умолчанию по ID
+        private ObservableCollection<Products> Products { get; set; }
+        private string _lastSortColumn = "id"; // По умолчанию сортируем по ID
+        private bool _isAscending = true; // По умолчанию сортировка по возрастанию
 
         public ProductsPage()
         {
             InitializeComponent();
-            LoadCategories();
+            Products = new ObservableCollection<Products>();
+
+            // Привязываем к ListView
+            ProductsListView.ItemsSource = Products;
+
+            // Загружаем данные
             LoadProducts();
+
+            // Загружаем данные категорий в ComboBox
+            LoadCategories();
         }
 
+        // Метод для загрузки категорий
         private void LoadCategories()
         {
-            var categories = Practice8Entities.GetContext().Сategories.ToList();
-            categories.Insert(0, new Сategories { id = 0, name = "Все категории" });
-            CategoryFilterComboBox.ItemsSource = categories;
-            CategoryFilterComboBox.SelectedIndex = 0;
+            try
+            {
+                var categories = Practice8Entities.GetContext().Сategories.ToList();
+                CategoryFilterComboBox.ItemsSource = categories;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки категорий: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        // Загрузка продуктов из БД
         private void LoadProducts()
         {
-            // Используем Include для загрузки связанных данных (категории)
-            ProductsListView.ItemsSource = Practice8Entities.GetContext().Products
-                .Include("Сategories") // Убедитесь, что это имя навигационного свойства
-                .OrderBy(p => p.id) // Сортировка по умолчанию по ID
-                .ToList();
-        }
-
-        private void SortProducts(Func<Products, object> keySelector)
-        {
-            var products = ProductsListView.ItemsSource.Cast<Products>().ToList();
-
-            if (_isSortAscending)
+            try
             {
-                products = products.OrderBy(keySelector).ToList();
+                Products.Clear();
+                var products = Practice8Entities.GetContext().Products.ToList();
+                foreach (var product in products)
+                {
+                    Products.Add(product);
+                }
+
+                // Применяем сортировку по умолчанию
+                ApplySorting();
             }
-            else
+            catch (Exception ex)
             {
-                products = products.OrderByDescending(keySelector).ToList();
-            }
-
-            ProductsListView.ItemsSource = products;
-            _isSortAscending = !_isSortAscending; // Переключаем направление сортировки
-        }
-
-        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
-        {
-            var header = sender as GridViewColumnHeader;
-            if (header == null) return;
-
-            string column = header.Content.ToString();
-
-            switch (column)
-            {
-                case "ID":
-                    if (_currentSortColumn == "id")
-                    {
-                        _isSortAscending = !_isSortAscending;
-                    }
-                    else
-                    {
-                        _currentSortColumn = "id";
-                        _isSortAscending = true;
-                    }
-                    SortProducts(p => p.id);
-                    break;
-
-                case "Название":
-                    if (_currentSortColumn == "name")
-                    {
-                        _isSortAscending = !_isSortAscending;
-                    }
-                    else
-                    {
-                        _currentSortColumn = "name";
-                        _isSortAscending = true;
-                    }
-                    SortProducts(p => p.name);
-                    break;
-
-                case "Категория":
-                    if (_currentSortColumn == "category")
-                    {
-                        _isSortAscending = !_isSortAscending;
-                    }
-                    else
-                    {
-                        _currentSortColumn = "category";
-                        _isSortAscending = true;
-                    }
-                    SortProducts(p => p.Сategories.name);
-                    break;
+                MessageBox.Show($"Ошибка загрузки продуктов: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Добавление нового продукта
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProductEditPage());
+            var newProduct = new Products
+            {
+                id = GetNextProductId(),
+                name = string.Empty,
+                category_id = 1 // Установите значение по умолчанию
+            };
+
+            NavigationService.Navigate(new ProductEditPage(newProduct, OnProductUpdated));
         }
 
+        // Редактирование выбранного продукта
         private void EditProduct_Click(object sender, RoutedEventArgs e)
         {
             var selectedProduct = ProductsListView.SelectedItem as Products;
             if (selectedProduct != null)
             {
-                NavigationService.Navigate(new ProductEditPage(selectedProduct));
+                NavigationService.Navigate(new ProductEditPage(selectedProduct, OnProductUpdated));
             }
             else
             {
@@ -121,19 +90,65 @@ namespace Practice8
             }
         }
 
+        // Удаление выбранного продукта
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedProduct = ProductsListView.SelectedItem as Products;
+            if (selectedProduct == null)
+            {
+                MessageBox.Show("Выберите продукт для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var result = MessageBox.Show("Вы уверены, что хотите удалить выбранный продукт?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var context = Practice8Entities.GetContext();
+                    context.Products.Remove(selectedProduct);
+                    context.SaveChanges();
+
+                    LoadProducts(); // Обновляем список продуктов
+                    MessageBox.Show("Продукт успешно удален!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении продукта: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        // Получение следующего ID
+        private int GetNextProductId()
+        {
+            return Products.Any() ? Products.Max(p => p.id) + 1 : 1;
+        }
+
+        // Колбэк для обновления данных после редактирования
+        private void OnProductUpdated()
+        {
+            LoadProducts();
+        }
+
+        // Обработчик события для ComboBox
         private void CategoryFilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ApplyFilter();
         }
 
+        // Обработчик события для TextBox
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ApplyFilter();
         }
 
+        // Применение фильтра
         private void ApplyFilter()
         {
             var selectedCategory = CategoryFilterComboBox.SelectedItem as Сategories;
+            var searchText = SearchTextBox.Text.ToLower();
+
             var query = Practice8Entities.GetContext().Products.AsQueryable();
 
             if (selectedCategory != null && selectedCategory.id != 0)
@@ -141,15 +156,41 @@ namespace Practice8
                 query = query.Where(p => p.category_id == selectedCategory.id);
             }
 
-            if (!string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            if (!string.IsNullOrEmpty(searchText))
             {
-                query = query.Where(p => p.name.StartsWith(SearchTextBox.Text));
+                query = query.Where(p => p.name.ToLower().Contains(searchText));
             }
 
-            // Используем Include для загрузки связанных данных (категории)
-            ProductsListView.ItemsSource = query
-                .Include("Сategories") // Убедитесь, что это имя навигационного свойства
-                .ToList();
+            ProductsListView.ItemsSource = query.ToList();
+        }
+
+        // Обработчик сортировки
+        private void SortProducts(object sender, RoutedEventArgs e)
+        {
+            var columnHeader = sender as GridViewColumnHeader;
+            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+
+            if (_lastSortColumn == sortColumn)
+            {
+                _isAscending = !_isAscending; // Инвертируем направление сортировки
+            }
+            else
+            {
+                _lastSortColumn = sortColumn;
+                _isAscending = true; // Сбрасываем направление сортировки
+            }
+
+            ApplySorting();
+        }
+
+        // Применение сортировки
+        private void ApplySorting()
+        {
+            var sortedProducts = _isAscending
+                ? Products.OrderBy(p => typeof(Products).GetProperty(_lastSortColumn).GetValue(p, null))
+                : Products.OrderByDescending(p => typeof(Products).GetProperty(_lastSortColumn).GetValue(p, null));
+
+            ProductsListView.ItemsSource = sortedProducts.ToList();
         }
     }
 }

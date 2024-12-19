@@ -1,4 +1,4 @@
-﻿<Page x:Class="Practice8.ProductsPage"
+﻿<Page x:Class="Practice8.Pages.ProductsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Продукция"
@@ -27,22 +27,23 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="ID" Click="SortProducts"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding name}" Width="200">
-                        <GridViewColumnHeader Content="Название" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Название" Click="SortProducts"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Сategories.name}" Width="150">
-                        <GridViewColumnHeader Content="Категория" Click="GridViewColumnHeader_Click"/>
+                        <GridViewColumnHeader Content="Категория" Click="SortProducts"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <!-- Кнопки добавления/редактирования -->
+        <!-- Кнопки добавления/редактирования/удаления -->
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
             <Button Content="Добавить" Width="100" Margin="5" Click="AddProduct_Click"/>
             <Button Content="Редактировать" Width="100" Margin="5" Click="EditProduct_Click"/>
+            <Button Content="Удалить" Width="100" Margin="5" Click="DeleteProduct_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -7,23 +8,21 @@ namespace Practice8.Pages
 {
     public partial class UserEditPage : Page
     {
-        private Practice8Entities _context;
-        private Users _user;
+        private readonly Users _user;
+        private readonly Action _onUserUpdated;
 
-        public UserEditPage(Users user = null)
+        public UserEditPage(Users user, Action onUserUpdated)
         {
             InitializeComponent();
-            _context = Practice8Entities.GetContext();
-            _user = user != null ? user : new Users();
+            _user = user;
+            _onUserUpdated = onUserUpdated;
 
-            if (user != null)
-            {
-                LastNameTextBox.Text = user.last_name;
-                FirstNameTextBox.Text = user.first_name;
-                PatronymicTextBox.Text = user.patronymic;
-                LoginTextBox.Text = user.login;
-                PasswordTextBox.Text = user.password;
-            }
+            // Привязка данных
+            LastNameTextBox.Text = _user.last_name;
+            FirstNameTextBox.Text = _user.first_name;
+            PatronymicTextBox.Text = _user.patronymic;
+            LoginTextBox.Text = _user.login;
+            PasswordTextBox.Text = _user.password;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -43,14 +42,23 @@ namespace Practice8.Pages
             _user.login = LoginTextBox.Text.Trim();
             _user.password = PasswordTextBox.Text.Trim();
 
-            if (_user.id == 0)
+            try
             {
-                _context.Users.Add(_user);
-            }
+                var context = Practice8Entities.GetContext();
+                if (_user.id == 0)
+                {
+                    context.Users.Add(_user);
+                }
 
-            _context.SaveChanges();
-            MessageBox.Show("Пользователь успешно сохранен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-            NavigationService.GoBack();
+                context.SaveChanges();
+                MessageBox.Show("Пользователь успешно сохранен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                _onUserUpdated?.Invoke();
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

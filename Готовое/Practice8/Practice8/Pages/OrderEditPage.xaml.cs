@@ -8,36 +8,33 @@ namespace Practice8.Pages
 {
     public partial class OrderEditPage : Page
     {
-        private Practice8Entities _context;
-        private Orders _order;
+        private readonly Orders _order;
+        private readonly Action _onOrderUpdated;
 
-        public OrderEditPage(Orders order = null)
+        public OrderEditPage(Orders order, Action onOrderUpdated)
         {
             InitializeComponent();
-            _context = Practice8Entities.GetContext();
-            _order = order != null ? order : new Orders();
+            _order = order;
+            _onOrderUpdated = onOrderUpdated;
 
-            LoadProducts();
-            LoadUsers();
+            // Загрузка продуктов и пользователей для ComboBox
+            var products = Practice8Entities.GetContext().Products.ToList();
+            var users = Practice8Entities.GetContext().Users.ToList();
 
-            if (order != null)
-            {
-                ProductComboBox.SelectedValue = order.product_id;
-                UserComboBox.SelectedValue = order.user_id;
-                PriceTextBox.Text = order.price;
-                CountTextBox.Text = order.count;
-                DatePicker.SelectedDate = order.date;
-            }
-        }
+            ProductComboBox.ItemsSource = products;
+            ProductComboBox.DisplayMemberPath = "name";
+            ProductComboBox.SelectedValuePath = "id";
 
-        private void LoadProducts()
-        {
-            ProductComboBox.ItemsSource = _context.Products.ToList();
-        }
+            UserComboBox.ItemsSource = users;
+            UserComboBox.DisplayMemberPath = "last_name";
+            UserComboBox.SelectedValuePath = "id";
 
-        private void LoadUsers()
-        {
-            UserComboBox.ItemsSource = _context.Users.ToList();
+            // Привязка данных
+            ProductComboBox.SelectedValue = _order.product_id;
+            UserComboBox.SelectedValue = _order.user_id;
+            PriceTextBox.Text = _order.price;
+            CountTextBox.Text = _order.count;
+            DatePicker.SelectedDate = _order.date;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -48,24 +45,38 @@ namespace Practice8.Pages
                 string.IsNullOrWhiteSpace(CountTextBox.Text) ||
                 DatePicker.SelectedDate == null)
             {
-                InfoTextBlock.Text = "Заполните все поля!";
+                MessageBox.Show("Заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            _order.product_id = (int)ProductComboBox.SelectedValue;
-            _order.user_id = (int)UserComboBox.SelectedValue;
-            _order.price = PriceTextBox.Text.Trim();
-            _order.count = CountTextBox.Text.Trim();
-            _order.date = DatePicker.SelectedDate;
-
-            if (_order.id == 0)
+            try
             {
-                _context.Orders.Add(_order);
-            }
+                // Обновляем платеж
+                _order.product_id = (int)ProductComboBox.SelectedValue;
+                _order.user_id = (int)UserComboBox.SelectedValue;
+                _order.price = PriceTextBox.Text;
+                _order.count = CountTextBox.Text;
+                _order.date = DatePicker.SelectedDate;
 
-            _context.SaveChanges();
-            MessageBox.Show("Платеж успешно сохранен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-            NavigationService.GoBack();
+                var context = Practice8Entities.GetContext();
+                if (!context.Orders.Any(o => o.id == _order.id))
+                {
+                    context.Orders.Add(_order); // Добавляем, если это новый платеж
+                }
+
+                context.SaveChanges();
+
+                MessageBox.Show("Платеж сохранен.", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Обновляем список платежей
+                _onOrderUpdated?.Invoke();
+
+                NavigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка сохранения: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

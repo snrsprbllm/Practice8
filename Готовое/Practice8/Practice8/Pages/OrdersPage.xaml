@@ -3,12 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Платежи"
       Background="AntiqueWhite">
-    <Page.Resources>
-        <!-- Стиль для сортируемых заголовков столбцов -->
-        <Style x:Key="SortableHeaderStyle" TargetType="GridViewColumnHeader">
-            <EventSetter Event="Click" Handler="GridViewColumnHeader_Click"/>
-        </Style>
-    </Page.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,39 +10,48 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Фильтр по категории -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <Label Content="Категория:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CategoryComboBox" Width="200" DisplayMemberPath="name"
+                      SelectionChanged="CategoryComboBox_SelectionChanged"/>
+            <Button Content="Сбросить фильтр" Click="ResetFilter_Click" Margin="10,0,0,0"/>
+        </StackPanel>
+
         <!-- Список платежей -->
         <ListView x:Name="OrdersListView" Grid.Row="1" Margin="0,0,0,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="ID" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Products.name}" Width="150">
-                        <GridViewColumnHeader Content="Продукт" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="Продукт" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Users.last_name}" Width="150">
-                        <GridViewColumnHeader Content="Пользователь" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="Пользователь" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding price}" Width="100">
-                        <GridViewColumnHeader Content="Цена" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="Цена" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding count}" Width="100">
-                        <GridViewColumnHeader Content="Количество" Style="{StaticResource SortableHeaderStyle}"/>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding sum}" Width="100">
-                        <GridViewColumnHeader Content="Сумма" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="Количество" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding date}" Width="100">
-                        <GridViewColumnHeader Content="Дата" Style="{StaticResource SortableHeaderStyle}"/>
+                        <GridViewColumnHeader Content="Дата" Click="SortOrders"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Products.Сategories.name}" Width="150">
+                        <GridViewColumnHeader Content="Категория" Click="SortOrders"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <!-- Кнопки добавления/редактирования -->
+        <!-- Кнопки добавления/редактирования/удаления -->
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
             <Button Content="Добавить" Width="100" Margin="5" Click="AddOrder_Click"/>
             <Button Content="Редактировать" Width="100" Margin="5" Click="EditOrder_Click"/>
+            <Button Content="Удалить" Width="100" Margin="5" Click="DeleteOrder_Click"/>
         </StackPanel>
     </Grid>
 </Page>

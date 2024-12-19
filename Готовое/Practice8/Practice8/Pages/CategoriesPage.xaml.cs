@@ -1,5 +1,5 @@
-﻿using Practice8.Pages;
-using System;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,94 +9,137 @@ namespace Practice8.Pages
 {
     public partial class CategoriesPage : Page
     {
-        private bool _isSortAscending = true;
-        private string _currentSortColumn = "id"; // Сортировка по умолчанию по ID
+        private ObservableCollection<Сategories> Categories { get; set; }
+        private string _lastSortColumn = "id"; // По умолчанию сортируем по ID
+        private bool _isAscending = true; // По умолчанию сортировка по возрастанию
 
         public CategoriesPage()
         {
             InitializeComponent();
+            Categories = new ObservableCollection<Сategories>();
+
+            // Привязываем к ListView
+            CategoriesListView.ItemsSource = Categories;
+
+            // Загружаем данные
             LoadCategories();
         }
 
+        // Загрузка категорий из БД
         private void LoadCategories()
         {
-            var categories = Practice8Entities.GetContext().Сategories
-                .OrderBy(c => c.id) // Сортировка по умолчанию по ID
-                .ToList();
-
-            CategoriesListView.ItemsSource = categories;
-        }
-
-        private void SortCategories(Func<Сategories, object> keySelector)
-        {
-            var categories = CategoriesListView.ItemsSource.Cast<Сategories>().ToList();
-
-            if (_isSortAscending)
+            try
             {
-                categories = categories.OrderBy(keySelector).ToList();
+                Categories.Clear();
+                var categories = Practice8Entities.GetContext().Сategories.ToList();
+                foreach (var category in categories)
+                {
+                    Categories.Add(category);
+                }
+
+                // Применяем сортировку по умолчанию
+                ApplySorting();
             }
-            else
+            catch (Exception ex)
             {
-                categories = categories.OrderByDescending(keySelector).ToList();
-            }
-
-            CategoriesListView.ItemsSource = categories;
-            _isSortAscending = !_isSortAscending; // Переключаем направление сортировки
-        }
-
-        private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
-        {
-            var header = sender as GridViewColumnHeader;
-            if (header == null) return;
-
-            string column = header.Content.ToString();
-
-            switch (column)
-            {
-                case "ID":
-                    if (_currentSortColumn == "id")
-                    {
-                        _isSortAscending = !_isSortAscending;
-                    }
-                    else
-                    {
-                        _currentSortColumn = "id";
-                        _isSortAscending = true;
-                    }
-                    SortCategories(c => c.id);
-                    break;
-
-                case "Название":
-                    if (_currentSortColumn == "name")
-                    {
-                        _isSortAscending = !_isSortAscending;
-                    }
-                    else
-                    {
-                        _currentSortColumn = "name";
-                        _isSortAscending = true;
-                    }
-                    SortCategories(c => c.name);
-                    break;
+                MessageBox.Show($"Ошибка загрузки категорий: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Добавление новой категории
         private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CategoryEditPage());
+            var newCategory = new Сategories
+            {
+                id = GetNextCategoryId(),
+                name = string.Empty
+            };
+
+            NavigationService.Navigate(new CategoryEditPage(newCategory, OnCategoryUpdated));
         }
 
+        // Редактирование выбранной категории
         private void EditCategory_Click(object sender, RoutedEventArgs e)
         {
             var selectedCategory = CategoriesListView.SelectedItem as Сategories;
             if (selectedCategory != null)
             {
-                NavigationService.Navigate(new CategoryEditPage(selectedCategory));
+                NavigationService.Navigate(new CategoryEditPage(selectedCategory, OnCategoryUpdated));
             }
             else
             {
                 MessageBox.Show("Выберите категорию для редактирования.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // Удаление выбранной категории
+        private void DeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedCategory = CategoriesListView.SelectedItem as Сategories;
+            if (selectedCategory == null)
+            {
+                MessageBox.Show("Выберите категорию для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var result = MessageBox.Show("Вы уверены, что хотите удалить выбранную категорию?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var context = Practice8Entities.GetContext();
+                    context.Сategories.Remove(selectedCategory);
+                    context.SaveChanges();
+
+                    LoadCategories(); // Обновляем список категорий
+                    MessageBox.Show("Категория успешно удалена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении категории: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        // Получение следующего ID
+        private int GetNextCategoryId()
+        {
+            return Categories.Any() ? Categories.Max(c => c.id) + 1 : 1;
+        }
+
+        // Колбэк для обновления данных после редактирования
+        private void OnCategoryUpdated()
+        {
+            LoadCategories();
+        }
+
+        // Обработчик сортировки
+        private void SortCategories(object sender, RoutedEventArgs e)
+        {
+            var columnHeader = sender as GridViewColumnHeader;
+            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+
+            if (_lastSortColumn == sortColumn)
+            {
+                _isAscending = !_isAscending; // Инвертируем направление сортировки
+            }
+            else
+            {
+                _lastSortColumn = sortColumn;
+                _isAscending = true; // Сбрасываем направление сортировки
+            }
+
+            ApplySorting();
+        }
+
+        // Применение сортировки
+        private void ApplySorting()
+        {
+            var sortedCategories = _isAscending
+                ? Categories.OrderBy(c => typeof(Сategories).GetProperty(_lastSortColumn).GetValue(c, null))
+                : Categories.OrderByDescending(c => typeof(Сategories).GetProperty(_lastSortColumn).GetValue(c, null));
+
+            CategoriesListView.ItemsSource = sortedCategories.ToList();
         }
     }
 }
