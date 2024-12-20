@@ -31,7 +31,7 @@ namespace Practice8.Pages
             try
             {
                 Users.Clear();
-                var users = Practice8Entities.GetContext().Users.ToList();
+                var users = Practice8Entities1.GetContext().Users.ToList();
                 foreach (var user in users)
                 {
                     Users.Add(user);
@@ -90,7 +90,7 @@ namespace Practice8.Pages
             {
                 try
                 {
-                    var context = Practice8Entities.GetContext();
+                    var context = Practice8Entities1.GetContext();
                     context.Users.Remove(selectedUser);
                     context.SaveChanges();
 
@@ -120,7 +120,13 @@ namespace Practice8.Pages
         private void SortUsers(object sender, RoutedEventArgs e)
         {
             var columnHeader = sender as GridViewColumnHeader;
-            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+            var sortColumn = columnHeader?.Tag as string; // Получаем имя свойства из Tag
+
+            if (string.IsNullOrEmpty(sortColumn))
+            {
+                MessageBox.Show("Невозможно определить столбец для сортировки.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (_lastSortColumn == sortColumn)
             {
@@ -138,9 +144,16 @@ namespace Practice8.Pages
         // Применение сортировки
         private void ApplySorting()
         {
+            var propertyInfo = typeof(Users).GetProperty(_lastSortColumn);
+            if (propertyInfo == null)
+            {
+                MessageBox.Show($"Свойство '{_lastSortColumn}' не найдено в типе 'Users'.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var sortedUsers = _isAscending
-                ? Users.OrderBy(u => typeof(Users).GetProperty(_lastSortColumn).GetValue(u, null))
-                : Users.OrderByDescending(u => typeof(Users).GetProperty(_lastSortColumn).GetValue(u, null));
+                ? Users.OrderBy(u => propertyInfo.GetValue(u, null))
+                : Users.OrderByDescending(u => propertyInfo.GetValue(u, null));
 
             UsersListView.ItemsSource = sortedUsers.ToList();
         }

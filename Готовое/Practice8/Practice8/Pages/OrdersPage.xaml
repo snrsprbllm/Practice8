@@ -23,25 +23,25 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="ID" Tag="id" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Products.name}" Width="150">
-                        <GridViewColumnHeader Content="Продукт" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Продукт" Tag="product_id" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Users.last_name}" Width="150">
-                        <GridViewColumnHeader Content="Пользователь" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Пользователь" Tag="user_id" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding price}" Width="100">
-                        <GridViewColumnHeader Content="Цена" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Цена" Tag="price" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding count}" Width="100">
-                        <GridViewColumnHeader Content="Количество" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Количество" Tag="count" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding date}" Width="100">
-                        <GridViewColumnHeader Content="Дата" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Дата" Tag="date" Click="SortOrders"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Products.Сategories.name}" Width="150">
-                        <GridViewColumnHeader Content="Категория" Click="SortOrders"/>
+                        <GridViewColumnHeader Content="Категория" Tag="category_id" Click="SortOrders"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

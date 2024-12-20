@@ -8,9 +8,9 @@
     <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="product_id" Type="int" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
-    <Property Name="price" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="count" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="sum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="count" Type="int" />
+    <Property Name="sum" Type="decimal" Precision="18" Scale="2" />
     <Property Name="date" Type="date" />
   </EntityType>
   <EntityType Name="Products">

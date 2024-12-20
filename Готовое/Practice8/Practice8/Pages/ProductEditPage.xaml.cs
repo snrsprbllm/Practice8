@@ -18,7 +18,7 @@ namespace Practice8.Pages
             _onProductUpdated = onProductUpdated;
 
             // Загрузка категорий для ComboBox
-            var categories = Practice8Entities.GetContext().Сategories.ToList();
+            var categories = Practice8Entities1.GetContext().Сategories.ToList();
             CategoryComboBox.ItemsSource = categories;
             CategoryComboBox.DisplayMemberPath = "name";
             CategoryComboBox.SelectedValuePath = "id";
@@ -42,7 +42,7 @@ namespace Practice8.Pages
                 _product.name = ProductNameTextBox.Text;
                 _product.category_id = (int)CategoryComboBox.SelectedValue;
 
-                var context = Practice8Entities.GetContext();
+                var context = Practice8Entities1.GetContext();
                 if (!context.Products.Any(p => p.id == _product.id))
                 {
                     context.Products.Add(_product); // Добавляем, если это новый продукт

@@ -34,7 +34,7 @@ namespace Practice8.Pages
                 // Обновляем категорию
                 _category.name = CategoryNameTextBox.Text;
 
-                var context = Practice8Entities.GetContext();
+                var context = Practice8Entities1.GetContext();
                 if (!context.Сategories.Any(c => c.id == _category.id))
                 {
                     context.Сategories.Add(_category); // Добавляем, если это новая категория

@@ -18,8 +18,8 @@ namespace Practice8.Pages
             _onOrderUpdated = onOrderUpdated;
 
             // Загрузка продуктов и пользователей для ComboBox
-            var products = Practice8Entities.GetContext().Products.ToList();
-            var users = Practice8Entities.GetContext().Users.ToList();
+            var products = Practice8Entities1.GetContext().Products.ToList();
+            var users = Practice8Entities1.GetContext().Users.ToList();
 
             ProductComboBox.ItemsSource = products;
             ProductComboBox.DisplayMemberPath = "name";
@@ -32,8 +32,8 @@ namespace Practice8.Pages
             // Привязка данных
             ProductComboBox.SelectedValue = _order.product_id;
             UserComboBox.SelectedValue = _order.user_id;
-            PriceTextBox.Text = _order.price;
-            CountTextBox.Text = _order.count;
+            PriceTextBox.Text = _order.price.ToString(); // Преобразуем decimal в string
+            CountTextBox.Text = _order.count.ToString(); // Преобразуем int в string
             DatePicker.SelectedDate = _order.date;
         }
 
@@ -51,14 +51,22 @@ namespace Practice8.Pages
 
             try
             {
+                // Преобразуем строки в числа
+                if (!decimal.TryParse(PriceTextBox.Text, out decimal price) ||
+                    !int.TryParse(CountTextBox.Text, out int count))
+                {
+                    MessageBox.Show("Цена и количество должны быть числами.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 // Обновляем платеж
                 _order.product_id = (int)ProductComboBox.SelectedValue;
                 _order.user_id = (int)UserComboBox.SelectedValue;
-                _order.price = PriceTextBox.Text;
-                _order.count = CountTextBox.Text;
+                _order.price = price; // Присваиваем decimal
+                _order.count = count; // Присваиваем int
                 _order.date = DatePicker.SelectedDate;
 
-                var context = Practice8Entities.GetContext();
+                var context = Practice8Entities1.GetContext();
                 if (!context.Orders.Any(o => o.id == _order.id))
                 {
                     context.Orders.Add(_order); // Добавляем, если это новый платеж

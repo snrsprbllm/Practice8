@@ -33,7 +33,7 @@ namespace Practice8.Pages
         {
             try
             {
-                var categories = Practice8Entities.GetContext().Сategories.ToList();
+                var categories = Practice8Entities1.GetContext().Сategories.ToList();
                 CategoryFilterComboBox.ItemsSource = categories;
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace Practice8.Pages
             try
             {
                 Products.Clear();
-                var products = Practice8Entities.GetContext().Products.ToList();
+                var products = Practice8Entities1.GetContext().Products.ToList();
                 foreach (var product in products)
                 {
                     Products.Add(product);
@@ -105,7 +105,7 @@ namespace Practice8.Pages
             {
                 try
                 {
-                    var context = Practice8Entities.GetContext();
+                    var context = Practice8Entities1.GetContext();
                     context.Products.Remove(selectedProduct);
                     context.SaveChanges();
 
@@ -149,7 +149,7 @@ namespace Practice8.Pages
             var selectedCategory = CategoryFilterComboBox.SelectedItem as Сategories;
             var searchText = SearchTextBox.Text.ToLower();
 
-            var query = Practice8Entities.GetContext().Products.AsQueryable();
+            var query = Practice8Entities1 .GetContext().Products.AsQueryable();
 
             if (selectedCategory != null && selectedCategory.id != 0)
             {
@@ -168,7 +168,13 @@ namespace Practice8.Pages
         private void SortProducts(object sender, RoutedEventArgs e)
         {
             var columnHeader = sender as GridViewColumnHeader;
-            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+            var sortColumn = columnHeader?.Tag as string; // Получаем имя свойства из Tag
+
+            if (string.IsNullOrEmpty(sortColumn))
+            {
+                MessageBox.Show("Невозможно определить столбец для сортировки.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (_lastSortColumn == sortColumn)
             {
@@ -183,12 +189,18 @@ namespace Practice8.Pages
             ApplySorting();
         }
 
-        // Применение сортировки
         private void ApplySorting()
         {
+            var propertyInfo = typeof(Products).GetProperty(_lastSortColumn);
+            if (propertyInfo == null)
+            {
+                MessageBox.Show($"Свойство '{_lastSortColumn}' не найдено в типе 'Products'.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var sortedProducts = _isAscending
-                ? Products.OrderBy(p => typeof(Products).GetProperty(_lastSortColumn).GetValue(p, null))
-                : Products.OrderByDescending(p => typeof(Products).GetProperty(_lastSortColumn).GetValue(p, null));
+                ? Products.OrderBy(p => propertyInfo.GetValue(p, null))
+                : Products.OrderByDescending(p => propertyInfo.GetValue(p, null));
 
             ProductsListView.ItemsSource = sortedProducts.ToList();
         }

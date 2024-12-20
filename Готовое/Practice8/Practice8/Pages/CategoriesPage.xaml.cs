@@ -31,7 +31,7 @@ namespace Practice8.Pages
             try
             {
                 Categories.Clear();
-                var categories = Practice8Entities.GetContext().Сategories.ToList();
+                var categories = Practice8Entities1.GetContext().Сategories.ToList();
                 foreach (var category in categories)
                 {
                     Categories.Add(category);
@@ -87,7 +87,7 @@ namespace Practice8.Pages
             {
                 try
                 {
-                    var context = Practice8Entities.GetContext();
+                    var context = Practice8Entities1.GetContext();
                     context.Сategories.Remove(selectedCategory);
                     context.SaveChanges();
 
@@ -117,7 +117,13 @@ namespace Practice8.Pages
         private void SortCategories(object sender, RoutedEventArgs e)
         {
             var columnHeader = sender as GridViewColumnHeader;
-            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+            var sortColumn = columnHeader?.Tag as string; // Получаем имя свойства из Tag
+
+            if (string.IsNullOrEmpty(sortColumn))
+            {
+                MessageBox.Show("Невозможно определить столбец для сортировки.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (_lastSortColumn == sortColumn)
             {
@@ -132,12 +138,18 @@ namespace Practice8.Pages
             ApplySorting();
         }
 
-        // Применение сортировки
         private void ApplySorting()
         {
+            var propertyInfo = typeof(Сategories).GetProperty(_lastSortColumn);
+            if (propertyInfo == null)
+            {
+                MessageBox.Show($"Свойство '{_lastSortColumn}' не найдено в типе 'Сategories'.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var sortedCategories = _isAscending
-                ? Categories.OrderBy(c => typeof(Сategories).GetProperty(_lastSortColumn).GetValue(c, null))
-                : Categories.OrderByDescending(c => typeof(Сategories).GetProperty(_lastSortColumn).GetValue(c, null));
+                ? Categories.OrderBy(c => propertyInfo.GetValue(c, null))
+                : Categories.OrderByDescending(c => propertyInfo.GetValue(c, null));
 
             CategoriesListView.ItemsSource = sortedCategories.ToList();
         }

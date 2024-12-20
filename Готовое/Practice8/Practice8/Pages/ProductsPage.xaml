@@ -27,13 +27,13 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="SortProducts"/>
+                        <GridViewColumnHeader Content="ID" Tag="id" Click="SortProducts"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding name}" Width="200">
-                        <GridViewColumnHeader Content="Название" Click="SortProducts"/>
+                        <GridViewColumnHeader Content="Название" Tag="name" Click="SortProducts"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Сategories.name}" Width="150">
-                        <GridViewColumnHeader Content="Категория" Click="SortProducts"/>
+                        <GridViewColumnHeader Content="Категория" Tag="category_id" Click="SortProducts"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

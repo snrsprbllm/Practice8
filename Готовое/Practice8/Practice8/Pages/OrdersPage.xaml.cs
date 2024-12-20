@@ -23,6 +23,23 @@ namespace Practice8.Pages
 
             // Загружаем данные
             LoadOrders();
+
+            // Загружаем категории для ComboBox
+            LoadCategories();
+        }
+
+        // Метод для загрузки категорий
+        private void LoadCategories()
+        {
+            try
+            {
+                var categories = Practice8Entities1.GetContext().Сategories.ToList();
+                CategoryComboBox.ItemsSource = categories;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки категорий: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Загрузка платежей из БД
@@ -31,13 +48,20 @@ namespace Practice8.Pages
             try
             {
                 Orders.Clear();
-                var orders = Practice8Entities.GetContext().Orders.ToList();
+                var query = Practice8Entities1.GetContext().Orders.AsQueryable();
+
+                // Если текущий пользователь не администратор, показываем только его заказы
+                if (App.CurrentUser != null && App.CurrentUser.role != "admin")
+                {
+                    query = query.Where(o => o.user_id == App.CurrentUser.id);
+                }
+
+                var orders = query.ToList();
                 foreach (var order in orders)
                 {
                     Orders.Add(order);
                 }
 
-                // Применяем сортировку по умолчанию
                 ApplySorting();
             }
             catch (Exception ex)
@@ -54,8 +78,8 @@ namespace Practice8.Pages
                 id = GetNextOrderId(),
                 product_id = 1, // Установите значение по умолчанию
                 user_id = 1, // Установите значение по умолчанию
-                price = string.Empty,
-                count = string.Empty,
+                price = (decimal?)null, // Убедитесь, что тип совпадает с исходным
+                count = (int?)null, // Убедитесь, что тип совпадает с исходным
                 date = DateTime.Now
             };
 
@@ -91,7 +115,7 @@ namespace Practice8.Pages
             {
                 try
                 {
-                    var context = Practice8Entities.GetContext();
+                    var context = Practice8Entities1.GetContext();
                     context.Orders.Remove(selectedOrder);
                     context.SaveChanges();
 
@@ -122,7 +146,7 @@ namespace Practice8.Pages
         private void ApplyFilter()
         {
             var selectedCategory = CategoryComboBox.SelectedItem as Сategories;
-            var query = Practice8Entities.GetContext().Orders.AsQueryable();
+            var query = Practice8Entities1.GetContext().Orders.AsQueryable();
 
             if (selectedCategory != null && selectedCategory.id != 0)
             {
@@ -148,7 +172,13 @@ namespace Practice8.Pages
         private void SortOrders(object sender, RoutedEventArgs e)
         {
             var columnHeader = sender as GridViewColumnHeader;
-            var sortColumn = columnHeader.Column.DisplayMemberBinding?.ToString().Replace("{Binding ", "").Replace("}", "");
+            var sortColumn = columnHeader?.Tag as string; // Получаем имя свойства из Tag
+
+            if (string.IsNullOrEmpty(sortColumn))
+            {
+                MessageBox.Show("Невозможно определить столбец для сортировки.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             if (_lastSortColumn == sortColumn)
             {
@@ -163,12 +193,18 @@ namespace Practice8.Pages
             ApplySorting();
         }
 
-        // Применение сортировки
         private void ApplySorting()
         {
+            var propertyInfo = typeof(Orders).GetProperty(_lastSortColumn);
+            if (propertyInfo == null)
+            {
+                MessageBox.Show($"Свойство '{_lastSortColumn}' не найдено в типе 'Orders'.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var sortedOrders = _isAscending
-                ? Orders.OrderBy(o => typeof(Orders).GetProperty(_lastSortColumn).GetValue(o, null))
-                : Orders.OrderByDescending(o => typeof(Orders).GetProperty(_lastSortColumn).GetValue(o, null));
+                ? Orders.OrderBy(o => propertyInfo.GetValue(o, null))
+                : Orders.OrderByDescending(o => propertyInfo.GetValue(o, null));
 
             OrdersListView.ItemsSource = sortedOrders.ToList();
         }

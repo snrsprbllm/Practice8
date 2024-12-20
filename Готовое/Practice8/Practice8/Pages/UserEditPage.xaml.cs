@@ -44,7 +44,7 @@ namespace Practice8.Pages
 
             try
             {
-                var context = Practice8Entities.GetContext();
+                var context = Practice8Entities1.GetContext();
                 if (_user.id == 0)
                 {
                     context.Users.Add(_user);

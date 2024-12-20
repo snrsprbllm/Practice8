@@ -1,13 +1,35 @@
 ﻿using Practice8.Pages;
+using System.ComponentModel;
 using System.Windows;
 
 namespace Practice8
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private bool _isUserAuthorized;
+
+        public bool IsUserAuthorized
+        {
+            get => _isUserAuthorized;
+            set
+            {
+                _isUserAuthorized = value;
+                OnPropertyChanged(nameof(IsUserAuthorized));
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this; // Устанавливаем DataContext для привязки
+            CheckAuthorization();
+            MainFrame.Navigate(new LoginPage()); // Начальная страница - LoginPage
+        }
+
+        private void CheckAuthorization()
+        {
+            // Проверяем, авторизован ли пользователь
+            IsUserAuthorized = App.CurrentUser != null;
         }
 
         private void Categories_Click(object sender, RoutedEventArgs e)
@@ -32,7 +54,14 @@ namespace Practice8
 
         private void Report_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new ReportPage());
+            MainFrame.Navigate(new ReportPage());
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

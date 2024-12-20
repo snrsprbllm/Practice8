@@ -13,5 +13,11 @@ namespace Practice8
     /// </summary>
     public partial class App : Application
     {
+        public static Users CurrentUser { get; set; }
+
+        public App()
+        {
+            CurrentUser = null; // Изначально пользователь не авторизован
+        }
     }
 }

@@ -13,9 +13,9 @@
           <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="price" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="count" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="sum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="count" Type="int" />
+          <Property Name="sum" Type="decimal" Precision="18" Scale="2" />
           <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="Products">
@@ -122,9 +122,9 @@
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="sum" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
@@ -205,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Practice8Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Practice8Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -229,7 +229,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Practice8ModelContainer" CdmEntityContainer="Practice8Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Practice8ModelContainer" CdmEntityContainer="Practice8Entities1">
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Practice8Model.Orders">
               <MappingFragment StoreEntitySet="Orders">

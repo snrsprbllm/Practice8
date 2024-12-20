@@ -15,19 +15,19 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="SortUsers"/>
+                        <GridViewColumnHeader Content="ID" Tag="id" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding last_name}" Width="100">
-                        <GridViewColumnHeader Content="Фамилия" Click="SortUsers"/>
+                        <GridViewColumnHeader Content="Фамилия" Tag="last_name" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding first_name}" Width="100">
-                        <GridViewColumnHeader Content="Имя" Click="SortUsers"/>
+                        <GridViewColumnHeader Content="Имя" Tag="first_name" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding patronymic}" Width="100">
-                        <GridViewColumnHeader Content="Отчество" Click="SortUsers"/>
+                        <GridViewColumnHeader Content="Отчество" Tag="patronymic" Click="SortUsers"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding login}" Width="100">
-                        <GridViewColumnHeader Content="Логин" Click="SortUsers"/>
+                        <GridViewColumnHeader Content="Логин" Tag="login" Click="SortUsers"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

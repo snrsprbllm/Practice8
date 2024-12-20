@@ -18,9 +18,9 @@ namespace Practice8
         public string name { get; set; }
         public int product_id { get; set; }
         public int user_id { get; set; }
-        public string price { get; set; }
-        public string count { get; set; }
-        public string sum { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<int> count { get; set; }
+        public Nullable<decimal> sum { get; set; }
         public Nullable<System.DateTime> date { get; set; }
     
         public virtual Products Products { get; set; }

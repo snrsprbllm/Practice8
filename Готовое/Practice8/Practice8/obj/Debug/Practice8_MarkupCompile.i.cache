@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\college\Ready\Practice8\Готовое\Practice8\Practice8\App.xaml
-91976715224
+121796042123
 2-211294137
-22732506025
-18-434232057
-MainWindow.xaml;Pages\CategoriesPage.xaml;Pages\CategoryEditPage.xaml;Pages\OrderEditPage.xaml;Pages\OrdersPage.xaml;Pages\ProductEditPage.xaml;Pages\ProductsPage.xaml;Pages\UserEditPage.xaml;Pages\UsersPage.xaml;
+251435379482
+135491180593
+MainWindow.xaml;Pages\CategoriesPage.xaml;Pages\CategoryEditPage.xaml;Pages\LoginPage.xaml;Pages\OrderEditPage.xaml;Pages\OrdersPage.xaml;Pages\ProductEditPage.xaml;Pages\ProductsPage.xaml;Pages\RegisterPage.xaml;Pages\ReportPage.xaml;Pages\UserEditPage.xaml;Pages\UsersPage.xaml;
 
-True
+False
 

@@ -15,10 +15,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id}" Width="50">
-                        <GridViewColumnHeader Content="ID" Click="SortCategories"/>
+                        <GridViewColumnHeader Content="ID" Tag="id" Click="SortCategories"/>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding name}" Width="200">
-                        <GridViewColumnHeader Content="Название" Click="SortCategories"/>
+                        <GridViewColumnHeader Content="Название" Tag="name" Click="SortCategories"/>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
