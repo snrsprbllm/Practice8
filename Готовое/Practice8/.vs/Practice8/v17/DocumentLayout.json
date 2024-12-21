@@ -3,60 +3,32 @@
   "WorkspaceRootPath": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\registerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\reportpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\reportpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\usereditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\usereditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\ordereditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\ordereditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\orderspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\orderspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\categoryeditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\categoryeditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\userspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\userspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\categoriespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\categoriespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\producteditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\producteditpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\reportpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\reportpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\producteditpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\producteditpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\categoryeditpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\categoryeditpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\practice8model.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\practice8model.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|c:\\college\\ready\\practice8\\\u0433\u043E\u0442\u043E\u0432\u043E\u0435\\practice8\\practice8\\practice8model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\practice8model.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\reportpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\reportpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\practice8\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0904B5B5-2CAD-43BF-B247-C272E37F6658}|Practice8\\Practice8.csproj|solutionrelative:practice8\\pages\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,183 +46,83 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\LoginPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\LoginPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\LoginPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\LoginPage.xaml.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwCQAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T10:00:16.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RegisterPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\RegisterPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\RegisterPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\RegisterPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\RegisterPage.xaml.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAQwDMAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T10:00:14.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderEditPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\OrderEditPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\OrderEditPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\OrderEditPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\OrderEditPage.xaml.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T10:00:05.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UsersPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\UsersPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\UsersPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\UsersPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\UsersPage.xaml.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAAwFwAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T09:59:35.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrdersPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\OrdersPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\OrdersPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\OrdersPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\OrdersPage.xaml.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAAwDUAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T09:58:45.029Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoriesPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoriesPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\CategoriesPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoriesPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\CategoriesPage.xaml.cs",
-              "ViewState": "AQIAAEkAAAAAAAAAAAAAwFkAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T09:57:34.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserEditPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\UserEditPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\UserEditPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\UserEditPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\UserEditPage.xaml.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAQwC4AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:40:59.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProductsPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductsPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\ProductsPage.xaml.cs",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAqwJcAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T09:54:26.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductEditPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductEditPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\ProductEditPage.xaml.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAABQAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:51:54.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ReportPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ReportPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\ReportPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ReportPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\ReportPage.xaml.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAQwCMAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T13:32:00.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoryEditPage.xaml.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoryEditPage.xaml.cs",
-              "RelativeDocumentMoniker": "Practice8\\Pages\\CategoryEditPage.xaml.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoryEditPage.xaml.cs",
-              "RelativeToolTip": "Practice8\\Pages\\CategoryEditPage.xaml.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwCQAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:45:01.525Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Practice8Model.Context.cs",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Practice8Model.Context.cs",
-              "RelativeDocumentMoniker": "Practice8\\Practice8Model.Context.cs",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Practice8Model.Context.cs",
-              "RelativeToolTip": "Practice8\\Practice8Model.Context.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAA3wCEAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T09:58:09.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Practice8Model.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Practice8Model.edmx",
-              "RelativeDocumentMoniker": "Practice8\\Practice8Model.edmx",
-              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Practice8Model.edmx [Diagram1]",
-              "RelativeToolTip": "Practice8\\Practice8Model.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2024-12-20T09:57:08.79Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "ReportPage.xaml",
               "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ReportPage.xaml",
               "RelativeDocumentMoniker": "Practice8\\Pages\\ReportPage.xaml",
               "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ReportPage.xaml",
               "RelativeToolTip": "Practice8\\Pages\\ReportPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-19T13:31:33.102Z",
+              "WhenOpened": "2024-12-20T17:58:12.708Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsPage.xaml.cs",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml.cs",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductsPage.xaml.cs",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml.cs",
+              "RelativeToolTip": "Practice8\\Pages\\ProductsPage.xaml.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwD8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T17:56:32.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsPage.xaml",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductsPage.xaml",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductsPage.xaml",
+              "RelativeToolTip": "Practice8\\Pages\\ProductsPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-20T17:54:54.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductEditPage.xaml.cs",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml.cs",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductEditPage.xaml.cs",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml.cs",
+              "RelativeToolTip": "Practice8\\Pages\\ProductEditPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T17:54:54.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductEditPage.xaml",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\ProductEditPage.xaml",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\ProductEditPage.xaml",
+              "RelativeToolTip": "Practice8\\Pages\\ProductEditPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-20T17:54:50.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoryEditPage.xaml",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoryEditPage.xaml",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\CategoryEditPage.xaml",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\CategoryEditPage.xaml",
+              "RelativeToolTip": "Practice8\\Pages\\CategoryEditPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-20T17:51:24.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "Practice8\\Pages\\LoginPage.xaml",
+              "ToolTip": "C:\\college\\Ready\\Practice8\\\u0413\u043E\u0442\u043E\u0432\u043E\u0435\\Practice8\\Practice8\\Pages\\LoginPage.xaml",
+              "RelativeToolTip": "Practice8\\Pages\\LoginPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-20T17:47:13.717Z"
             }
           ]
         }
